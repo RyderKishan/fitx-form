@@ -1,0 +1,142 @@
+.JF-Root {
+  padding: 8px;
+}
+
+.JF-Group {
+  margin-bottom: 8px;
+}
+
+.JF-Group > .name {
+  font-size: large;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.JF-Group > .JF-Elements {
+  padding: 16px;
+  background: #eeeeee;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row !important;
+}
+
+.row > div {
+  margin: 0 8px 0 0;
+}
+
+.JF-Element {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.JF-Element > .name {
+  margin-right: 8px;
+  width: 96px;
+}
+
+.JF-Element > .type {
+  flex: 1;
+}
+
+.JF-Input { 
+  display: flex;
+  flex-direction: column;
+}
+
+.JF-Element > .type > .JF-Input > input,
+.JF-Element > .type > .JF-Input > select {
+  height: 32px;
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 2px 12px;
+  outline: none;
+  outline-offset: unset;
+  border: 1px solid white;
+}
+
+.JF-Element input:focus,
+.JF-Element select:focus {
+  border-color: #00b4d2 !important;
+  animation: appear 0.5s;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.09);
+}
+
+.JF-Element input::selection {
+  color: #fff;
+  background: #558fa3;
+}
+
+.JF-Element input[disabled], select[disabled] {
+  cursor: not-allowed;
+}
+
+.JF-Input > div {
+  padding: 2px 8px;
+  font-size: 10px;
+}
+
+.JF-Input > .Error {
+  color: red;
+}
+
+.JF-Input > .Helper {
+  color: inherit;
+}
+
+.JF-Option {
+  padding: 8px;
+}
+
+.JF-Option > div:last-child {
+  padding: 2px 8px;
+  font-size: 10px;
+}
+
+.JF-Option > div:first-child {
+  display: flex;
+  padding: 4px 8px;
+}
+
+.JF-Option > div:first-child > label{
+  display: flex;
+  align-items: center;
+  margin: 0 8px 0 0;
+  cursor: pointer;
+}
+
+.JF-Option > div:first-child.column > label{
+  margin: 0 0 8px 0;
+  width: fit-content;
+}
+
+.JF-Option > div:first-child > label > input {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.JF-Option > .Error {
+  color: red;
+}
+
+.JF-Option > .Helper {
+  color: inherit;
+}
+
+.JF-Option > .column {
+  flex-direction: column;
+}
+
+@keyframes appear {
+  0% {
+    border-color: #ffffff;
+  }
+
+  100% {
+    border-color: #00b4d2;
+  }
+}

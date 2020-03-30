@@ -1,0 +1,73 @@
+{
+  "name": "fitx-form",
+  "version": "1.0.0",
+  "description": "JSON controlled responsive react form",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --forceExit -c jest.config.js",
+    "clean": "rm -rf build",
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyderKishan/fitx-form.git"
+  },
+  "keywords": [
+    "React",
+    "JSON",
+    "Form"
+  ],
+  "author": "Balkishan S",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyderKishan/fitx-form/issues"
+  },
+  "homepage": "https://github.com/RyderKishan/fitx-form#readme",
+  "dependencies": {
+    "moment-timezone": "^0.5.28",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-react-css-modules": "^5.2.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "compression-webpack-plugin": "^3.1.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "favicons-webpack-plugin": "^3.0.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "4.0.0-beta.11",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^25.1.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
+    "npm-run-all": "^4.1.5",
+    "react-test-renderer": "^16.13.0",
+    "sass-loader": "^8.0.2",
+    "supertest": "^4.0.2",
+    "terser-webpack-plugin": "^2.3.5",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-manifest-plugin": "^2.2.0",
+    "webpack-merge": "^4.2.2",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
