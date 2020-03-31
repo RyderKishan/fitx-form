@@ -6,7 +6,7 @@ import DateInput from './components/DateInput';
 import RadioInput from './components/RadioInput';
 import SelectInput from './components/SelectInput';
 import TextInput from './components/TextInput';
-import './JsonForm.scss';
+import './FitxForm.scss';
 
 const COMPONENTS = {
   ButtonInput,
@@ -48,7 +48,7 @@ const renderer = (gp, element, formValues, onChange, onClick) => {
   );
 };
 
-const JsonForm = (props) => {
+const FitxForm = (props) => {
   const {
     metaData, formValues, onChange, onClick,
   } = props;
@@ -79,18 +79,18 @@ const JsonForm = (props) => {
   );
 };
 
-JsonForm.defaultProps = {
+FitxForm.defaultProps = {
   formValues: {},
   metaData: [],
   onChange: () => null,
   onClick: () => null,
 };
 
-JsonForm.propTypes = {
+FitxForm.propTypes = {
   formValues: PropTypes.shape({}),
   metaData: PropTypes.arrayOf(PropTypes.shape({})),
   onChange: PropTypes.func,
   onClick: PropTypes.func,
 };
 
-export default JsonForm;
+export default FitxForm;

@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import JsonForm from './JsonForm';
+import FitxForm from './FitxForm';
 import * as Constants from './constants';
 
 ReactDOM.render(
-  <JsonForm {...Constants.props} />,
+  <FitxForm {...Constants.props} />,
   document.getElementById('app'),
 );

@@ -1,0 +1,17 @@
+__mocks__
+config
+build
+node_modules
+src
+.babelrc
+.dockerignore
+.eslintrc.json
+.gitattributes
+.gitignore
+Dockerfile
+jest.config.js
+LICENSE
+README.md
+webpack.common.js
+webpack.dev.js
+webpack.prod.js
