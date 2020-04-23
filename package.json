@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/RyderKishan/fitx-form#readme",
   "dependencies": {
+    "ki-ui": "^1.0.3",
     "moment-timezone": "^0.5.28",
     "prop-types": "^15.7.2"
   },
