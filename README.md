@@ -9,6 +9,7 @@ A responsive [React](https://reactjs.org/) form for various input types controll
 </div>
 
 ![Fitx - Form Image](https://raw.githubusercontent.com/RyderKishan/fitx-form/master/src/assets/json.png)
+![Fitx - Form Output](https://raw.githubusercontent.com/RyderKishan/fitx-form/master/src/assets/output.png)
 
 ## Installation
 
