@@ -1,6 +1,6 @@
 {
   "name": "fitx-form",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "JSON controlled responsive react form",
   "main": "lib/index.js",
   "scripts": {
