@@ -3,7 +3,7 @@ const getError = (testString, regex) => {
   return !new RegExp(regex).test(testString);
 };
 
-const isNull = (data) => data !== undefined && data !== null;
+const isNull = (data) => data === undefined || data === null;
 
 export {
   getError,

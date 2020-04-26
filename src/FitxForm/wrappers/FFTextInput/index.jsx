@@ -1,42 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { TextInput } from 'ki-ui';
 
 import { getError } from '../../utils';
-import './TextInput.scss';
 
-const TextInput = (props) => {
+const FFTextInput = (props) => {
   const {
     onChange, value, placeholder, disabled,
     maxLength, type, defaultValue, readOnly,
     max, min, spellCheck, error, errorText,
     helperText, regex,
   } = props;
-  const [val, setVal] = useState(value);
+  const showError = getError(value, regex) || error || (type === 'number' && (value > max || value < min));
   useEffect(() => {
     if (defaultValue) onChange(defaultValue);
   }, []);
-  useEffect(() => {
-    setVal(value);
-  }, [value]);
-  const showError = getError(val, regex) || error;
   return (
-    <div className="JF-Input JF-TextInput">
-      <input
-        disabled={disabled}
-        height={8}
-        max={max}
-        maxLength={maxLength}
-        min={min}
-        onBlur={() => onChange(val)}
-        onChange={(e) => setVal(e.target.value)}
+    <div className="FF-Input FF-TextInput">
+      <TextInput
         placeholder={placeholder}
+        disabled={disabled}
         readOnly={readOnly}
-        spellCheck={spellCheck}
+        maxLength={maxLength}
         type={type}
-        value={val || defaultValue}
+        spellCheck={spellCheck}
+        onBlur={(e) => onChange(e.target.value)}
+        defaultValue={defaultValue || value}
+        max={max}
+        min={min}
       />
       <div
-        className={`${showError ? 'Error' : 'Helper'}`}
+        className={`FF-Input-Footer ${showError ? 'Error' : 'Helper'}`}
       >
         {showError ? errorText : helperText}
       </div>
@@ -44,8 +38,8 @@ const TextInput = (props) => {
   );
 };
 
-TextInput.defaultProps = {
-  defaultValue: '',
+FFTextInput.defaultProps = {
+  defaultValue: undefined,
   disabled: false,
   error: false,
   errorText: '',
@@ -53,16 +47,16 @@ TextInput.defaultProps = {
   max: null,
   maxLength: null,
   min: null,
-  onChange: () => { },
+  onChange: null,
   placeholder: '',
   readOnly: false,
-  regex: null,
+  regex: '',
   spellCheck: false,
-  value: '',
+  value: undefined,
   type: 'text',
 };
 
-TextInput.propTypes = {
+FFTextInput.propTypes = {
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.bool,
@@ -80,4 +74,4 @@ TextInput.propTypes = {
   value: PropTypes.string,
 };
 
-export default TextInput;
+export default FFTextInput;

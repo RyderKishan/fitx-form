@@ -1,0 +1,60 @@
+.FF-Root {
+  display: grid;
+  padding: 1em;
+}
+
+.FF-Group {
+  padding: 1em;
+}
+
+.FF-Group > .FF-Group-Name {
+  font-size: large;
+  font-weight: 400;
+  margin: 0 .5em 1em .5em;
+}
+
+.FF-Group > .FF-Group-Elements {
+  background: #eeeeee;
+  width: 100%;
+  border-radius: 1.2em;
+  border-spacing: 1em;
+  flex-direction: column;
+}
+
+.El-Row {
+  flex-direction: row !important;
+}
+
+.El-Row > div {
+  margin: 0 1em 0 0;
+}
+
+.FF-Element {
+  margin-bottom: 1em;
+}
+
+
+.FF-Element > .Element-Name {
+  max-width: 16em;
+}
+
+.Element-Type > .FF-Input {
+  display: flex;
+  flex-direction: column;
+}
+
+.FF-Input .FF-Input-Footer {
+  font-size: x-small;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: .25em .5em 0 .5em;
+}
+
+.FF-Input .Error {
+  color: red;
+}
+
+.FF-Input .Helper {
+  color: gray;
+}

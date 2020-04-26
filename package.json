@@ -1,6 +1,6 @@
 {
   "name": "fitx-form",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "JSON controlled responsive react form",
   "main": "lib/index.js",
   "scripts": {
@@ -25,13 +25,15 @@
   },
   "homepage": "https://github.com/RyderKishan/fitx-form#readme",
   "dependencies": {
-    "ki-ui": "^1.0.3",
+    "ki-ui": "^1.0.6",
     "moment-timezone": "^0.5.28",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "ramda": "^0.27.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react-dom": ">=16.8.0",
+    "ramda": "^0.27.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",

@@ -6,7 +6,6 @@ A responsive [React](https://reactjs.org/) form for various input types controll
 
 [![npm package](https://img.shields.io/npm/v/fitx-form/latest.svg)](https://www.npmjs.com/package/fitx-form)
 [![npm downloads](https://img.shields.io/npm/dm/fitx-form.svg)](https://www.npmjs.com/package/fitx-form)
-
 </div>
 
 ## Installation

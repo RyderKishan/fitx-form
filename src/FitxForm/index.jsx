@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonInput from './components/ButtonInput';
-import CheckboxInput from './components/CheckboxInput';
-import DateInput from './components/DateInput';
-import RadioInput from './components/RadioInput';
-import SelectInput from './components/SelectInput';
-import TextInput from './components/TextInput';
-import './FitxForm.scss';
+import ButtonInput from './wrappers/FFButtonInput';
+import CheckboxInput from './wrappers/FFCheckboxInput';
+import DateInput from './wrappers/FFDateInput';
+import RadioInput from './wrappers/FFRadioInput';
+import SelectInput from './wrappers/FFSelectInput';
+import TextInput from './wrappers/FFTextInput';
+import './FitxForm.css';
 
 const COMPONENTS = {
   ButtonInput,
@@ -24,15 +24,15 @@ const renderer = (gp, element, formValues, onChange, onClick) => {
   const value = formValues && groupId && id && formValues[groupId]
     && formValues[groupId][id];
   return (
-    <div key={element.id} className="JF-Element">
+    <tr key={element.id} className="FF-Element">
       {
         element.name && (
-        <div className="name">
-          {element.name}
-        </div>
+          <td className="Element-Name">
+            {element.name}
+          </td>
         )
       }
-      <div className="type" id={element.id}>
+      <td className="Element-Type" id={element.id}>
         {Annotation && (
           <Annotation
             {...element}
@@ -43,35 +43,38 @@ const renderer = (gp, element, formValues, onChange, onClick) => {
             value={value}
           />
         )}
-      </div>
-    </div>
+      </td>
+    </tr>
   );
 };
 
 const FitxForm = (props) => {
   const {
-    metaData, formValues, onChange, onClick,
+    metaData, formValues, onChange, onClick, columns,
   } = props;
   return (
-    <div className="JF-Root">
+    <div className="FF-Root" style={{ gridTemplateColumns: `repeat(${columns}, auto)` }}>
       {
         metaData.map((gp) => !gp.hide && (
           <div
-            className="JF-Group"
+            className="FF-Group"
+            key={gp.groupId}
             id={gp.groupId}
           >
-            <div className="name">
+            <div className="FF-Group-Name">
               {gp.groupName}
             </div>
-            <div
-              className={`JF-Elements ${gp.direction === 'row' ? 'row' : ''}`.trim()}
+            <table
+              className={`FF-Group-Elements ${gp.direction === 'El-Row' ? 'El-Row' : ''}`.trim()}
             >
-              {
-                gp.elements
-                  .map((element) => !element.hide
-                    && renderer(gp, element, formValues, onChange, onClick))
-              }
-            </div>
+              <tbody>
+                {
+                  gp.elements
+                    .map((element) => !element.hide
+                      && renderer(gp, element, formValues, onChange, onClick))
+                }
+              </tbody>
+            </table>
           </div>
         ))
       }
@@ -82,6 +85,7 @@ const FitxForm = (props) => {
 FitxForm.defaultProps = {
   formValues: {},
   metaData: [],
+  columns: 1,
   onChange: () => null,
   onClick: () => null,
 };
@@ -89,6 +93,7 @@ FitxForm.defaultProps = {
 FitxForm.propTypes = {
   formValues: PropTypes.shape({}),
   metaData: PropTypes.arrayOf(PropTypes.shape({})),
+  columns: PropTypes.number,
   onChange: PropTypes.func,
   onClick: PropTypes.func,
 };

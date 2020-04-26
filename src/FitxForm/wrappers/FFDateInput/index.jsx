@@ -1,35 +1,44 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment-timezone';
+import { DateInput } from 'ki-ui';
 
-import { getError } from '../../utils';
-import './DateInput.scss';
 
-const DateInput = (props) => {
+import { getError, isNull } from '../../utils';
+
+const FFDateInput = (props) => {
   const {
-    onChange, value, id, subType, allowClear, readOnly,
+    onChange, value, subType, allowClear, readOnly,
     error, errorText, helperText, regex, disabled, defaultValue,
   } = props;
   const showError = getError(value, regex) || error;
-  const dt = value ? moment(value)
-    .format(subType === 'date' ? 'YYYY-MM-DD' : 'YYYY-MM-DDTHH:mm') : '';
+  const customValue = defaultValue || value;
+  const dt = (customValue === '' || isNull(customValue)) ? undefined : moment(customValue)
+    .format(subType === 'date' ? 'YYYY-MM-DD' : 'YYYY-MM-DDTHH:mm');
+  const onChangeHandler = (val) => {
+    if (val === '') {
+      onChange('');
+    } else if (subType === 'date') {
+      onChange(moment(val).format('YYYY-MM-DD'));
+    } else {
+      onChange(moment(val).toISOString());
+    }
+  };
   useEffect(() => {
-    if (defaultValue) onChange(defaultValue);
+    if (defaultValue) onChangeHandler(defaultValue);
   }, []);
   return (
-    <div className="JF-Input JF-DateInput">
-      <input
+    <div className="FF-Input FF-DateInput">
+      <DateInput
         allowClear={allowClear}
         disabled={disabled}
-        id={id}
-        onChange={(e) => onChange(moment(e.target.value).toISOString())}
+        onChange={(e) => onChangeHandler(e.target.value)}
         readOnly={readOnly}
-        title="Enter a date in this format YYYY-MM-DD"
         type={subType}
         value={dt}
       />
       <div
-        className={`${showError ? 'Error' : 'Helper'}`}
+        className={`FF-Input-Footer ${showError ? 'Error' : 'Helper'}`}
       >
         {showError ? errorText : helperText}
       </div>
@@ -37,28 +46,27 @@ const DateInput = (props) => {
   );
 };
 
-DateInput.defaultProps = {
+FFDateInput.defaultProps = {
   allowClear: true,
-  defaultValue: '',
+  defaultValue: undefined,
   disabled: false,
   error: false,
   errorText: '',
   helperText: '',
-  onChange: () => { },
+  onChange: null,
   readOnly: false,
   regex: null,
   subType: 'date',
-  value: null,
+  value: undefined,
 };
 
-DateInput.propTypes = {
+FFDateInput.propTypes = {
   allowClear: PropTypes.bool,
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.bool,
   errorText: PropTypes.string,
   helperText: PropTypes.string,
-  id: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   readOnly: PropTypes.bool,
   regex: PropTypes.string,
@@ -66,4 +74,4 @@ DateInput.propTypes = {
   value: PropTypes.string,
 };
 
-export default DateInput;
+export default FFDateInput;

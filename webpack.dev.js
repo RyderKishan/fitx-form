@@ -47,7 +47,7 @@ module.exports = merge(common, {
     writeToDisk: true,
     contentBase: 'build',
     historyApiFallback: true,
-    liveReload: false,
+    liveReload: true,
     port: 8118,
   },
   plugins: [
