@@ -8,6 +8,8 @@ A responsive [React](https://reactjs.org/) form for various input types controll
 [![npm downloads](https://img.shields.io/npm/dm/fitx-form.svg)](https://www.npmjs.com/package/fitx-form)
 </div>
 
+![Fitx - Form Exapmle](https://raw.githubusercontent.com/RyderKishan/fitx-form/master/src/assets/json.png)
+
 ## Installation
 
 fitx-form is available as an [npm package](https://www.npmjs.com/package/fitx-form).
@@ -62,51 +64,11 @@ function App() {
 
 ReactDOM.render(<App />, document.querySelector('#app'));
 ```
-
-How to handle the events?
-
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import FitxForm from 'fitx-form';
-import * as R from 'ramda';
-import * as Constants from './constants';
-
-function App() {
-  const [values, setValues] = useState({});
-  const onFormValuesChange = (groupId, elementId, value) => {
-    const lensProp = R.lensPath([groupId, elementId]);
-    const newValue = R.set(lensProp, value, { ...values });
-    setValues(newValue);
-  };
-  const onFormElementClick = (groupId, elementId) => {
-    let query = `${groupId} ${elementId}`;
-    switch (query) {
-      case 'personalDetails submit':
-        onPartySave();
-        break;
-      default: {
-        query = '';
-      }
-    }
-  };
-  return (
-    <FitxForm
-      formValues={values}
-      metaData={Constants.metaData}
-      onChange={onFormValuesChange}
-      onClick={onFormElementClick}
-      columns={2}
-    />
-  );
-}
-
-ReactDOM.render(<App />, document.querySelector('#app'));
-```
+Full working exapmle with handlers is given in the Example section
 
 ## Documentation
 
-#### Component Props
+#### FitxForm Props
 
 | Props | Type | Description |  
 |-----------|:-----------|:-----------|
@@ -147,6 +109,49 @@ ReactDOM.render(<App />, document.querySelector('#app'));
 | `subType` | string | Sub type of available components  |
 
 ## Example
+
+Full Working Example
+
+[Constants File](https://raw.githubusercontent.com/RyderKishan/fitx-form/master/src/constants/index.js).
+
+```jsx
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import FitxForm from 'fitx-form';
+import * as R from 'ramda';
+import * as Constants from './constants';
+
+function App() {
+  const [values, setValues] = useState({});
+  const onFormValuesChange = (groupId, elementId, value) => {
+    const lensProp = R.lensPath([groupId, elementId]);
+    const newValue = R.set(lensProp, value, { ...values });
+    setValues(newValue);
+  };
+  const onFormElementClick = (groupId, elementId) => {
+    let query = `${groupId} ${elementId}`;
+    switch (query) {
+      case 'personalDetails submit':
+        onPartySave();
+        break;
+      default: {
+        query = '';
+      }
+    }
+  };
+  return (
+    <FitxForm
+      formValues={values}
+      metaData={Constants.metaData}
+      onChange={onFormValuesChange}
+      onClick={onFormElementClick}
+      columns={2}
+    />
+  );
+}
+
+ReactDOM.render(<App />, document.querySelector('#app'));
+```
 
 ![Fitx - Form Exapmle](https://raw.githubusercontent.com/RyderKishan/fitx-form/master/src/assets/example.png)
 
